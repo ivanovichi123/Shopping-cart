@@ -1,17 +1,13 @@
+import { HomePage } from "./homePage/HomePage";
+
 const App = () => {
     return (
-        <div>
-            <p className="hello">Hello</p>
-        </div>
+        <>
+        <HomePage />
+        </>
     );
 };
 
 export { App };
 
 // EL PLAN
-// HACER EL HEADER DE LA HOMEPAGE: EN PROCESO
-// HACER EL NAV DEL HEADER COMO UN COMPONENTE NUEVO PARA REUTILIZARLO: NO HECHO
-// HACER EL MAIN: NO HECHO
-// HACER EL FOOTER: NO HECHO
-// CHECAR SI SE LE PUEDEN AGREGAR TESTS: NO HECHO
-// CONTINUAR CON EL SHOPPGAE: NO HECHO
