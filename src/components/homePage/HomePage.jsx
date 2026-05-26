@@ -1,6 +1,7 @@
 import { NavBar } from "../NavBar"
 import Chef from "../../assets/Chef.svg"
 import styles from "../../styles/homePage.module.css"
+import { Footer } from "../Footer"
 
 const HomePage = () => {
     return (
@@ -18,12 +19,7 @@ const HomePage = () => {
                 <img className={ styles.theMainImage } src = {Chef} alt = "An image" />
                 <p className={styles.theText2}>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad, iste facere. Eos enim iste sit quasi ea maxime ad quod distinctio aut? Voluptatum aspernatur nulla praesentium officia veniam maxime magni.</p>
             </main>
-            <footer className={styles.theFooter}>
-                <p>This page was made by ivanovichi productions</p>
-                <p>Email: thisisnotarealemail@notgmail.com</p>
-                <p>Enjoy the page</p>
-                <p>Phone: 999-999-9999</p>
-            </footer>
+            <Footer />
         </>
     )
 }
