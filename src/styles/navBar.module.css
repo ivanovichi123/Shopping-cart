@@ -1,0 +1,29 @@
+.navigation {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr;
+    background-color: #FFC0CB;
+    padding: 0.5rem;
+    place-items: center;
+}
+
+.Home {
+    grid-column: 1/2;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 2rem;
+    cursor: pointer;
+}
+
+.Shop {
+    grid-column: 2/3;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 2rem;
+    cursor: pointer;
+}
+
+.Cart {
+    grid-column: 3/4;
+    height: 50px;
+    width: 100%;
+    cursor: pointer;
+}
