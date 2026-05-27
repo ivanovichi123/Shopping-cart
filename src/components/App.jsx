@@ -1,11 +1,11 @@
 import { HomePage } from "./homePage/HomePage";
 
 const App = () => {
-    return (
-        <>
-        <HomePage />
-        </>
-    );
+  return (
+    <>
+      <HomePage />
+    </>
+  );
 };
 
 export { App };
