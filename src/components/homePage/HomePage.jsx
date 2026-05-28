@@ -20,7 +20,7 @@ const HomePage = () => {
           three sections, the home is just a simple introduction and welcome to
           the user, the shop is where the products are for you tu select them
           and the cart is where you can see the selected items. Have fun going
-          through the page.
+          through the page. NOTE: THE LIMIT OF ITEMS YOU CAN HAVE IN THE CART IS 200.
         </p>
         <img className={styles.theMainImage} src={Chef} alt="An image" />
         <p className={styles.theText2}>
