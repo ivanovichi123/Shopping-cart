@@ -20,7 +20,9 @@ const ShopPage = () => {
     "Television",
   ];
 
-  const [productsList, setProductsList] = useState([5,0,0,0,0,0,0,0,0,0,0,0]);
+  const [productsList, setProductsList] = useState([
+    5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+  ]);
   const [cartItems, setCartItems] = useState(0);
 
   function productNumberGreater(index) {
@@ -40,7 +42,7 @@ const ShopPage = () => {
   function inputChange(e, index) {
     let newValue;
     let modifiedList = [...productsList];
-    if(isNaN(+e.target.value)) {
+    if (isNaN(+e.target.value)) {
       newValue = 0;
     } else {
       newValue = numberUpLimit(+e.target.value);
@@ -50,14 +52,14 @@ const ShopPage = () => {
   }
 
   function numberUpLimit(value) {
-    if(value > 200) {
+    if (value > 200) {
       return 200;
     }
     return value;
   }
 
-  function numberDownLimit (value) {
-    if(value < 0) {
+  function numberDownLimit(value) {
+    if (value < 0) {
       return 0;
     }
     return value;
@@ -67,8 +69,8 @@ const ShopPage = () => {
     e.preventDefault();
   }
 
-  function theCartUp (index) {
-    if(cartItems === 200) {
+  function theCartUp(index) {
+    if (cartItems === 200) {
       return;
     }
     let newCartItems = cartItems + productsList[index];
@@ -78,13 +80,12 @@ const ShopPage = () => {
     setCartItems(newCartItems);
   }
 
-
   return (
     <>
       <header className={styles.theHeader}>
         <h1>Shop</h1>
       </header>
-      <NavBar cartItems={cartItems}/>
+      <NavBar cartItems={cartItems} />
       <main className={styles.theMainContainer}>
         {products.map((individualProduct, index) => {
           return (
@@ -98,11 +99,36 @@ const ShopPage = () => {
                 alt={`I am ${individualProduct}`}
               />
               <div className={styles.theDivForm}>
-                <form name="theForm" className={styles.theForm} onSubmit={() => theFormSubmit(event)}>
-                  <button className={styles.theMore} onClick={() => productNumberGreater(index)}>+</button>
-                  <input name="theInput" className={styles.theInput} type="tel" value={productsList[index]} onChange={() => inputChange(event,index)}/>
-                  <button className={styles.theLess} onClick={() => productNumberLesser(index)}>-</button>
-                  <button className={styles.theSubmit} onClick={() => theCartUp(index)}>Add to cart</button>
+                <form
+                  name="theForm"
+                  className={styles.theForm}
+                  onSubmit={() => theFormSubmit(event)}
+                >
+                  <button
+                    className={styles.theMore}
+                    onClick={() => productNumberGreater(index)}
+                  >
+                    +
+                  </button>
+                  <input
+                    name="theInput"
+                    className={styles.theInput}
+                    type="tel"
+                    value={productsList[index]}
+                    onChange={() => inputChange(event, index)}
+                  />
+                  <button
+                    className={styles.theLess}
+                    onClick={() => productNumberLesser(index)}
+                  >
+                    -
+                  </button>
+                  <button
+                    className={styles.theSubmit}
+                    onClick={() => theCartUp(index)}
+                  >
+                    Add to cart
+                  </button>
                 </form>
               </div>
             </div>

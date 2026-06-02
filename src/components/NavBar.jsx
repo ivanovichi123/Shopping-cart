@@ -12,10 +12,17 @@ const NavBar = (props) => {
         Shop
       </Link>
       <div className={styles.divCart}>
-        <div className={styles.cartItems} style={{width: props.cartItems >= 100 ? '30px' : '20px', display: props.cartItems === 0 ? 'none' : 'flex'}}>{props.cartItems}</div>
+        <div
+          className={styles.cartItems}
+          style={{
+            width: props.cartItems >= 100 ? "30px" : "20px",
+            display: props.cartItems === 0 ? "none" : "flex",
+          }}
+        >
+          {props.cartItems}
+        </div>
         <img className={styles.Cart} src={Cart} alt="A cart" />
       </div>
-
     </nav>
   );
 };
