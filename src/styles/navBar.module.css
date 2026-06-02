@@ -29,9 +29,27 @@
   text-decoration: none;
 }
 
-.Cart {
+.divCart {
   grid-column: 3/4;
+  display: grid;
+}
+
+.cartItems {
+  position: relative;
+  background-color: red;
+  grid-column: 1 / -1;
+  grid-row: 1 / -1;
+  height: 20px;
+  border-radius: 10px;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+
+.Cart {
   height: 50px;
   width: 100%;
   cursor: pointer;
+  grid-column: 1 / -1;
+  grid-row: 1 / -1;
 }

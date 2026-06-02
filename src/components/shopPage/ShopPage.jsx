@@ -21,6 +21,7 @@ const ShopPage = () => {
   ];
 
   const [productsList, setProductsList] = useState([5,0,0,0,0,0,0,0,0,0,0,0]);
+  const [cartItems, setCartItems] = useState(0);
 
   function productNumberGreater(index) {
     let modifiedList = [...productsList];
@@ -66,7 +67,16 @@ const ShopPage = () => {
     e.preventDefault();
   }
 
-  // console.log("render");
+  function theCartUp (index) {
+    if(cartItems === 200) {
+      return;
+    }
+    let newCartItems = cartItems + productsList[index];
+    if (newCartItems > 200) {
+      newCartItems = 200;
+    }
+    setCartItems(newCartItems);
+  }
 
 
   return (
@@ -74,7 +84,7 @@ const ShopPage = () => {
       <header className={styles.theHeader}>
         <h1>Shop</h1>
       </header>
-      <NavBar />
+      <NavBar cartItems={cartItems}/>
       <main className={styles.theMainContainer}>
         {products.map((individualProduct, index) => {
           return (
@@ -88,11 +98,11 @@ const ShopPage = () => {
                 alt={`I am ${individualProduct}`}
               />
               <div className={styles.theDivForm}>
-                <form className={styles.theForm} onSubmit={() => theFormSubmit(event)}>
+                <form name="theForm" className={styles.theForm} onSubmit={() => theFormSubmit(event)}>
                   <button className={styles.theMore} onClick={() => productNumberGreater(index)}>+</button>
-                  <input className={styles.theInput} type="tel" value={productsList[index]} onChange={() => inputChange(event,index)}/>
+                  <input name="theInput" className={styles.theInput} type="tel" value={productsList[index]} onChange={() => inputChange(event,index)}/>
                   <button className={styles.theLess} onClick={() => productNumberLesser(index)}>-</button>
-                  <button className={styles.theSubmit}>Add to cart</button>
+                  <button className={styles.theSubmit} onClick={() => theCartUp(index)}>Add to cart</button>
                 </form>
               </div>
             </div>
