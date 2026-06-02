@@ -32,6 +32,7 @@
 .divCart {
   grid-column: 3/4;
   display: grid;
+  text-decoration: none;
 }
 
 .cartItems {

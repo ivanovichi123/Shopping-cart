@@ -11,7 +11,7 @@ const NavBar = (props) => {
       <Link to="/shop" className={styles.Shop}>
         Shop
       </Link>
-      <div className={styles.divCart}>
+      <Link to="/cart" className={styles.divCart}>
         <div
           className={styles.cartItems}
           style={{
@@ -22,7 +22,7 @@ const NavBar = (props) => {
           {props.cartItems}
         </div>
         <img className={styles.Cart} src={Cart} alt="A cart" />
-      </div>
+      </Link>
     </nav>
   );
 };

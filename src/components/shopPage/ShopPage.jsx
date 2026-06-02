@@ -3,6 +3,8 @@ import { Footer } from "../Footer";
 import styles from "../../styles/shopPage.module.css";
 import Apple from "../../assets/Apple.svg";
 import { useState } from "react";
+import { useContext } from "react";
+import { CartContext } from "../../contexts/cart.context";
 
 const ShopPage = () => {
   const products = [
@@ -21,9 +23,9 @@ const ShopPage = () => {
   ];
 
   const [productsList, setProductsList] = useState([
-    5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
   ]);
-  const [cartItems, setCartItems] = useState(0);
+  const { cartNumber, setCartNumber } = useContext(CartContext);
 
   function productNumberGreater(index) {
     let modifiedList = [...productsList];
@@ -70,14 +72,14 @@ const ShopPage = () => {
   }
 
   function theCartUp(index) {
-    if (cartItems === 200) {
+    if (cartNumber === 200) {
       return;
     }
-    let newCartItems = cartItems + productsList[index];
+    let newCartItems = cartNumber + productsList[index];
     if (newCartItems > 200) {
       newCartItems = 200;
     }
-    setCartItems(newCartItems);
+    setCartNumber(newCartItems);
   }
 
   return (
@@ -85,7 +87,7 @@ const ShopPage = () => {
       <header className={styles.theHeader}>
         <h1>Shop</h1>
       </header>
-      <NavBar cartItems={cartItems} />
+      <NavBar cartItems={cartNumber} />
       <main className={styles.theMainContainer}>
         {products.map((individualProduct, index) => {
           return (

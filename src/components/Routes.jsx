@@ -2,6 +2,7 @@ import { Navigate, replace } from "react-router";
 import { App } from "./App";
 import { ShopPage } from "./shopPage/ShopPage";
 import { ErrorPage } from "./ErrorPage";
+import { CartPage } from "./cartPage/CartPage";
 
 const routes = [
   {
@@ -15,6 +16,10 @@ const routes = [
   {
     path: "/shop",
     element: <ShopPage />,
+  },
+  {
+    path: "/cart",
+    element: <CartPage />,
   },
   {
     path: "*",
