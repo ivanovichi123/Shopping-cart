@@ -19,7 +19,7 @@
 .theContainer {
   display: inline;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 2fr 1fr 1fr;
   grid-template-rows: 1fr;
   background-color: rgb(240, 230, 86);
   padding: 1rem;
@@ -38,7 +38,7 @@
 .theItemName {
   grid-column: 2/3;
   grid-row: 1/2;
-  font-size: 3rem;
+  font-size: 2rem;
   justify-self: center;
 }
 

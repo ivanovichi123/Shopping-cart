@@ -2,7 +2,7 @@ import { NavBar } from "../NavBar";
 import { Footer } from "../Footer";
 import styles from "../../styles/shopPage.module.css";
 import Apple from "../../assets/Apple.svg";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useContext } from "react";
 import { CartContext } from "../../contexts/cart.context";
 
@@ -14,6 +14,35 @@ const ShopPage = () => {
   ]);
 
   const { cartNumber, setCartNumber } = useContext(CartContext);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      let productInformation = [1, 2, 3, 4, 19, 6, 7, 20, 9, 10, 11, 12];
+      let ultimateInfo = [];
+      let newCartItemList = structuredClone(cartItemList);
+
+      try {
+        let information = productInformation.map(async (productIndividual) => {
+          return fetch(
+            `https://fakestoreapi.com/products/${productIndividual}`,
+          ).then((res) => res.json());
+        });
+
+        let answers = await Promise.all(information);
+
+        for (let i = 0; i < answers.length; i++) {
+          newCartItemList[i].Name = answers[i].title;
+          newCartItemList[i].Img = answers[i].image;
+        }
+
+        setCartItemList(newCartItemList);
+      } catch (error) {
+        console.error("Error fetching data: ", error);
+      }
+    };
+
+    fetchData();
+  }, []);
 
   function productNumberGreater(index) {
     let modifiedList = [...productsList];
@@ -91,7 +120,7 @@ const ShopPage = () => {
               </div>
               <img
                 className={styles.theImage}
-                src={Apple}
+                src={individualProduct.Img}
                 alt={`I am ${individualProduct.Name}`}
               />
               <div className={styles.theDivForm}>
