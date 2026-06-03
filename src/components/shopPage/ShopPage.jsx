@@ -7,24 +7,12 @@ import { useContext } from "react";
 import { CartContext } from "../../contexts/cart.context";
 
 const ShopPage = () => {
-  const products = [
-    "Apple",
-    "Cereal",
-    "Water",
-    "Cellphone",
-    "Book",
-    "Chips",
-    "Cookies",
-    "Watermelon",
-    "Coffee",
-    "Shirt",
-    "Candy",
-    "Television",
-  ];
+  const { cartItemList, setCartItemList } = useContext(CartContext);
 
   const [productsList, setProductsList] = useState([
     0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
   ]);
+
   const { cartNumber, setCartNumber } = useContext(CartContext);
 
   function productNumberGreater(index) {
@@ -72,14 +60,20 @@ const ShopPage = () => {
   }
 
   function theCartUp(index) {
+    let productsAdd = 0;
     if (cartNumber === 200) {
       return;
     }
     let newCartItems = cartNumber + productsList[index];
+    let newCartItemsList = structuredClone(cartItemList);
+    productsAdd = productsList[index];
     if (newCartItems > 200) {
+      productsAdd = 200 - cartNumber;
       newCartItems = 200;
     }
+    newCartItemsList[index].Quantity += productsAdd;
     setCartNumber(newCartItems);
+    setCartItemList(newCartItemsList);
   }
 
   return (
@@ -89,16 +83,16 @@ const ShopPage = () => {
       </header>
       <NavBar cartItems={cartNumber} />
       <main className={styles.theMainContainer}>
-        {products.map((individualProduct, index) => {
+        {cartItemList.map((individualProduct, index) => {
           return (
-            <div key={index} className={styles.Card}>
+            <div key={individualProduct.Key} className={styles.Card}>
               <div className={styles.theDivTitle}>
-                <p className={styles.theTitle}> {individualProduct} </p>
+                <p className={styles.theTitle}> {individualProduct.Name} </p>
               </div>
               <img
                 className={styles.theImage}
                 src={Apple}
-                alt={`I am ${individualProduct}`}
+                alt={`I am ${individualProduct.Name}`}
               />
               <div className={styles.theDivForm}>
                 <form
