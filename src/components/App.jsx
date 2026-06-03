@@ -9,4 +9,3 @@ const App = () => {
 };
 
 export { App };
-

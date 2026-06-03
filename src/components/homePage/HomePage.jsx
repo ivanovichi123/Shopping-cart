@@ -6,7 +6,6 @@ import { CartContext } from "../../contexts/cart.context";
 import { useContext } from "react";
 
 const HomePage = () => {
-
   const { cartNumber, setCartNumber } = useContext(CartContext);
 
   return (
@@ -14,7 +13,7 @@ const HomePage = () => {
       <header className={styles.theHeader}>
         <h1>Shopping Cart</h1>
       </header>
-      <NavBar cartItems={cartNumber}/>
+      <NavBar cartItems={cartNumber} />
       <main className={styles.theMain}>
         <p className={styles.theText1}>
           Hi, this a simple page made in react that simulates a shopping page in
