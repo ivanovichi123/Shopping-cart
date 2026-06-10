@@ -74,6 +74,7 @@ const CartPage = () => {
         {cartItemList.map((individualProduct, index) => {
           return (
             <div
+              data-testid="Element"
               key={individualProduct.Key}
               className={styles.theContainer}
               style={{

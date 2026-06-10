@@ -13,6 +13,7 @@ const NavBar = (props) => {
       </Link>
       <Link to="/cart" className={styles.divCart}>
         <div
+          data-testid="cartCircle"
           className={styles.cartItems}
           style={{
             width: props.cartItems >= 100 ? "30px" : "20px",
