@@ -2,8 +2,11 @@ import { createContext, useState } from "react";
 import Apple from "../assets/Apple.svg";
 import { CartContext } from "./cart.context";
 
+//Context just made for test purposes
 function CartContextWrapperTest(props) {
+  //Variable that stores the total number of items in the cart
   const [cartNumber, setCartNumber] = useState(100);
+  //Array of objects that store information of individual products
   const [cartItemList, setCartItemList] = useState([
     {
       Name: "Apple",

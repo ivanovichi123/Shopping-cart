@@ -7,45 +7,57 @@ import styles from "../../styles/cartPage.module.css";
 import Delete from "../../assets/Delete.svg";
 
 const CartPage = () => {
+  //Global variables form the context to check the number of items and the list of them
   const { cartNumber, setCartNumber } = useContext(CartContext);
   const { cartItemList, setCartItemList } = useContext(CartContext);
 
+  //Function that adds one quantity
   function cartNumberGreater(index) {
+    //Temporal variables
     let newCartItemValue, newCartValue;
     let newCartItemList = structuredClone(cartItemList);
+    //Call a function that checks if the new number is less than 200 and greater than -1
     [newCartValue, newCartItemValue] = theChecker(
       cartNumber + 1,
       cartItemList[index].Quantity + 1,
     );
+    //Check if the values remain the same to not call a rerender
     if (
       newCartValue === cartNumber &&
       newCartItemList[index].Quantity === newCartItemValue
     ) {
       return;
     }
+    //Update the values and set the new values
     newCartItemList[index].Quantity = newCartItemValue;
     setCartNumber(newCartValue);
     setCartItemList(newCartItemList);
   }
 
+  //Functions that subtracts one quantity
   function cartNumberLesser(index) {
+    //Temporal variables
     let newCartItemValue, newCartValue;
     let newCartItemList = structuredClone(cartItemList);
+    //Call a function that checks if the new number is less than 200 and greater than -1
     [newCartValue, newCartItemValue] = theChecker(
       cartNumber - 1,
       cartItemList[index].Quantity - 1,
     );
+    //Check if the values remain the same to not call a rerender
     if (
       newCartValue === cartNumber &&
       newCartItemList[index].Quantity === newCartItemValue
     ) {
       return;
     }
+    //Update the values and set the new values
     newCartItemList[index].Quantity = newCartItemValue;
     setCartNumber(newCartValue);
     setCartItemList(newCartItemList);
   }
 
+  //Function that checks if the numbers are less than 200 and greater than -1
   function theChecker(numberCart, numberList) {
     if (numberCart > 200) {
       return [200, numberList - 1];
@@ -56,10 +68,15 @@ const CartPage = () => {
     return [numberCart, numberList];
   }
 
+  //Function that deletes all the quantity of an item
   function deleteQuantity(index) {
+    //Copy the array of items
     let newCartItemList = structuredClone(cartItemList);
+    //Get the quantity of the item
     let numberCartDown = newCartItemList[index].Quantity;
+    //Set the quantity as zero
     newCartItemList[index].Quantity = 0;
+    //Update the values
     setCartNumber(cartNumber - numberCartDown);
     setCartItemList(newCartItemList);
   }

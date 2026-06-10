@@ -6,6 +6,7 @@ import { CartContext } from "../../contexts/cart.context";
 import { useContext } from "react";
 
 const HomePage = () => {
+  //Get the quantity of the cart from the context
   const { cartNumber, setCartNumber } = useContext(CartContext);
 
   return (
@@ -18,11 +19,11 @@ const HomePage = () => {
         <p className={styles.theText1}>
           Hi, this a simple page made in react that simulates a shopping page in
           which you can navigate through different products and select the ones
-          you want with the quantity. All the products you choose you decide
+          you want with the quantity. All the products you choose
           will be store in the cart for you to see the products you select and
           giving you the chance to change the quantity. The page is divided in
           three sections, the home is just a simple introduction and welcome to
-          the user, the shop is where the products are for you tu select them
+          the user, the shop is where the products are for you to select them
           and the cart is where you can see the selected items. Have fun going
           through the page. NOTE: THE LIMIT OF ITEMS YOU CAN HAVE IN THE CART IS
           200.

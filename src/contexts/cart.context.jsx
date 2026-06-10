@@ -4,7 +4,9 @@ import Apple from "../assets/Apple.svg";
 const CartContext = createContext();
 
 function CartContextWrapper(props) {
+  //Variable that stores the total number of items in the cart
   const [cartNumber, setCartNumber] = useState(0);
+  //Array of objects that store information of individual products
   const [cartItemList, setCartItemList] = useState([
     {
       Name: "A product",
